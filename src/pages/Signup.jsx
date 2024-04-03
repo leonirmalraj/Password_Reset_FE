@@ -60,17 +60,13 @@ const Signup = () => {
       const response = await AxiosService.post("/user/signup", values);
       const { message } = response.data;
       console.log(message);
-      toast.success(message, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      toast.success(message);
       navigate("/signin");
     } catch (error) {
       console.error(error.response.data);
       const errorMessage =
         error.response.data.message || "Registration failed. Please try again.";
-      toast.error(errorMessage, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
